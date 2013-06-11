@@ -1,3 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'stqatools'
+require 'thor'
+
+puts Stqatools::CloudAnalyzer::GLOBAL_VAR
+
+class MyCLI < Thor
+
+end
+
+MyCLI.start(ARGV)
