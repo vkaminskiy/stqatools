@@ -17,5 +17,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib", "lib/stqatools"]
 
-  gem.add_dependency "thor", ">= :1.8.0"
+  #gem.add_dependency "thor", ">= :1.8.0"
 end
