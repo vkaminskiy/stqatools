@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require 'stqatools'
+require 'thor'
+
+#puts Stqatools::CloudAnalyzer::GLOBAL_VAR
+
+module ValidateInputs
+end
+
+module Stqatools
+  class MyCLI < Thor
+    include Thor::Actions
+
+    default_task :summary
+
+    desc :summary, "Print help for all options."
+    def summary
+      puts "HEEEEELP"
+    end
+
+    desc :start, "Run Vertical, Horizontal or single job."
+    method_option :vertical, type: :boolean, aliases: '-v', desc: 'Run vertical'
+    method_option :horizontal, type: :boolean, aliases: '-h', desc: 'Run horizontal'
+    method_option :job, type: :boolean, aliases: '-j', desc: 'Run single job'
+    method_option :prefix, type: :string, aliases: '-p', desc: 'Regex for jobs', required: :true
+    method_option :threshold, type: :string, aliases: '-t', desc: 'Threshold option', default: 'failure'
+    method_option :filter, type: :array, aliases: '-f', desc: 'Filter option for jobs', default: [1,2]
+    method_option :subchains, type: :array, aliases: '-s', desc: 'Split vertical or horizontal to subchains'
+    def start
+      puts "Vertical" if options[:vertical]
+      puts "Horizontal" if options[:horizontal]
+      puts "Job" if options[:jobi]
+      puts options[:prefix]
+      puts options[:filter].class
+      if yes?('Are you sure?', :yellow)
+        say 'Delete all', :red
+      else
+        say "Cancel", :red
+        return
+      end
+    end
+  end
+end
+
+MyCLI.start(ARGV)
+
+Stqatools::met1
