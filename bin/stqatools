@@ -3,7 +3,7 @@
 require 'stqatools'
 require 'thor'
 
-#puts Stqatools::CloudAnalyzer::GLOBAL_VAR
+puts Stqatools::CloudAnalyzer::GLOBAL_VAR
 
 module ValidateInputs
 end
@@ -43,6 +43,6 @@ module Stqatools
   end
 end
 
-MyCLI.start(ARGV)
+Stqatools::MyCLI.start(ARGV)
 
-Stqatools::met1
+Stqatools::CloudAnalyzer.new
