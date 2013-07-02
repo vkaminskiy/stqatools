@@ -28,5 +28,4 @@ module Stqatools
     @@rest_config_loaded = true
     @@rest_connection_config
   end
-  
 end
