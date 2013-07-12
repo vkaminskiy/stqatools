@@ -9,7 +9,7 @@ module Stqatools
       @rest_config = Stqatools::rest_config
       puts "Connecting to Dashboard..."
       @client = RightApi::Client.new(:email => @rest_config[:user], :password => @rest_config[:pass], :account_id => '2901')
-      CloudAnalyzer::load_clouds
+      load_clouds
       puts @@clouds_data
     end
 

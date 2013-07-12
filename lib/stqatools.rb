@@ -28,8 +28,6 @@ module Stqatools
     end
     @@rest_config_loaded = true
     @@rest_connection_config
-
-  def Stqatools.met1
-    puts "method 1"
   end
+
 end

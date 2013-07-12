@@ -20,13 +20,13 @@ module Stqatools
     end
 
     desc :start, "Run Vertical, Horizontal or single job."
-    method_option :vertical, type: :boolean, aliases: '-v', desc: 'Run vertical'
-    method_option :horizontal, type: :boolean, aliases: '-h', desc: 'Run horizontal'
-    method_option :job, type: :boolean, aliases: '-j', desc: 'Run single job'
-    method_option :prefix, type: :string, aliases: '-p', desc: 'Regex for jobs', required: :true
-    method_option :threshold, type: :string, aliases: '-t', desc: 'Threshold option', default: 'failure'
-    method_option :filter, type: :array, aliases: '-f', desc: 'Filter option for jobs', default: [1,2]
-    method_option :subchains, type: :array, aliases: '-s', desc: 'Split vertical or horizontal to subchains'
+    method_option :vertical, :type => :boolean, :aliases => '-v', :desc => 'Run vertical'
+    method_option :horizontal, :type => :boolean, :aliases => '-h', :desc => 'Run horizontal'
+    method_option :job, :type => :boolean, :aliases => '-j', :desc => 'Run single job'
+    method_option :prefix, :type => :string, :aliases => '-p', :desc => 'Regex for jobs', :required => :true
+    method_option :threshold, :type => :string, :aliases => '-t', :desc => 'Threshold option', :default => 'failure'
+    method_option :filter, :type => :array, :aliases => '-f', :desc => 'Filter option for jobs', :default => [1,2]
+    method_option :subchains, :type => :array, :aliases => '-s', :desc => 'Split vertical or horizontal to subchains'
     def start
       puts "Vertical" if options[:vertical]
       puts "Horizontal" if options[:horizontal]
@@ -40,9 +40,10 @@ module Stqatools
         return
       end
     end
-    
+ 
+   
     desc :disable, "Disable all jobs which match prefix."
-    method_option :prefix, type: :string, aliases: '-p', desc: 'Regex for jobs', required: :true
+    method_option :prefix, :type => :string, :aliases => '-p', :desc => 'Regex for jobs', :required => :true
     def disable     
       puts "Disabling jobs which match #{options[:prefix]}"
       puts @@client.object_id
@@ -54,6 +55,7 @@ end
 
 
 @@client = Stqatools::CoreRunner.setup_jenkins_client # Put this outside command logic
+puts @@client
 
 Stqatools::MyCLI.start(ARGV)
 
