@@ -40,8 +40,20 @@ module Stqatools
         return
       end
     end
+    
+    desc :disable, "Disable all jobs which match prefix."
+    method_option :prefix, type: :string, aliases: '-p', desc: 'Regex for jobs', required: :true
+    def disable     
+      puts "Disabling jobs which match #{options[:prefix]}"
+      puts @@client.object_id
+      Stqatools::CoreRunner.disable_jobs(@@client, options[:prefix])
+    end
+
   end
 end
+
+
+@@client = Stqatools::CoreRunner.setup_jenkins_client # Put this outside command logic
 
 Stqatools::MyCLI.start(ARGV)
 

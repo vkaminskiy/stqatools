@@ -3,6 +3,7 @@ require 'right_api_client'
 
 require "stqatools/version"
 require 'stqatools/cloud_analyzer'
+require 'stqatools/core_runner'
 
 # Main module file of ST QA tools
 
@@ -27,5 +28,8 @@ module Stqatools
     end
     @@rest_config_loaded = true
     @@rest_connection_config
+
+  def Stqatools.met1
+    puts "method 1"
   end
 end
