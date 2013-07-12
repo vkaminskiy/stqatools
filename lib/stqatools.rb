@@ -1,5 +1,6 @@
 require "stqatools/version"
 require 'stqatools/cloud_analyzer'
+require 'stqatools/core_runner'
 
 module Stqatools
   # Your code goes here...
@@ -8,6 +9,6 @@ module Stqatools
   TEXT = "TEST"
   
   def Stqatools.met1
-    pust "method 1"
+    puts "method 1"
   end
 end
