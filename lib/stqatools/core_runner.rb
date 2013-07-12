@@ -11,7 +11,7 @@ module Stqatools
    
     def self.disable_jobs(client, prefix)
       puts client.object_id
-      jobs = @client.job.list(prefix)
+      jobs = client.job.list(prefix)
     end
 
     def self.setup_jenkins_client
