@@ -1,29 +1,27 @@
 require 'jenkins_api_client'
 require 'yaml'
+require 'pp'
 
 module Stqatools
   module CoreRunner
-    # puts "Hello core runner"
 
-    JENKINS_API_DIR = File.expand_path('~/.jenkins_api_client')
-    JENKINS_API_CONFIG = File.join(JENKINS_API_DIR, 'login.yml')
-
-   
-    def self.disable_jobs(client, prefix)
-      puts client.object_id
-      jobs = client.job.list(prefix)
+    def self.disable_jobs(prefix)
+      jobs = Stqatools::get_jenkins_client.job.list(prefix)
+      pp jobs
     end
 
-    def self.setup_jenkins_client
-      if File.exists?(Stqatools::CoreRunner::JENKINS_API_CONFIG)
-        begin
-          @@jenkins_client = JenkinsApi::Client.new(YAML.load_file(Stqatools::CoreRunner::JENKINS_API_CONFIG))
-        rescue Errno::EBADF, IOError
-          retry
+    def self.run_single_job(name)
+      dash_client = Stqatools::CloudAnalyzer.new
+      clouds = Stqatools::load_rocket_clouds
+      pp clouds[:cloud_ids].class
+
+      clouds[:cloud_ids].each do |key, id|
+        n_key = key.sub("-","_")
+        if name =~ /#{n_key}/
+          pp dash_client.get_cloud_capacity(id.to_i)
         end
       end
     
-    @@jenkins_client
     end
   end
 end
