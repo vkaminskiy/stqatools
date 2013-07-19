@@ -25,7 +25,11 @@ module Stqatools
 
     def get_cloud_capacity(cloud_id)
       puts "Getting cloud capacity..."
-      pp @client.clouds(:id => cloud_id).show.instances.index
+      puts cloud_id.class
+      puts @client
+      new_id = cloud_id.to_s
+      puts new_id.class
+      pp @client.clouds(:id => new_id).show.instances.index
     end
 
   end

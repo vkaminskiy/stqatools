@@ -40,7 +40,7 @@ module Stqatools
 
   def self.load_rocket_clouds
     if not @@rocket_clouds_loaded
-      puts "Loadinf rocket monkey clouds"
+      puts "Loading rocket monkey clouds"
       @@rocket_clouds = {}
       if File.exists?(Stqatools::ROCKETMONKEY_CLOUDS_CONFIG_FILE)
         begin
